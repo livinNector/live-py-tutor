@@ -1244,7 +1244,7 @@ var ExecutionVisualizer = /** @class */ (function () {
         // render error (if applicable):
         if (myViz.curLineExceptionMsg) {
             if (myViz.curLineExceptionMsg === "Unknown error") {
-                myViz.navControls.showError('Unknown error: ' + footer_html_1.unsupportedFeaturesStr);
+                myViz.navControls.showError('Unknown error: ');
             }
             else {
                 myViz.navControls.showError(myViz.curLineExceptionMsg);
@@ -4474,7 +4474,7 @@ var NavigationController = /** @class */ (function () {
     };
     NavigationController.prototype.showError = function (msg) {
         if (msg) {
-            this.domRoot.find("#errorOutput").html(htmlspecialchars(msg) + ("\n      <div style=\"font-size: 11pt; color: #666\">(" + footer_html_1.unsupportedFeaturesStr + ")</div>")).show();
+            this.domRoot.find("#errorOutput").html(htmlspecialchars(msg) + ("\n      <div style=\"font-size: 11pt; color: #666\"></div>")).show();
         }
         else {
             this.domRoot.find("#errorOutput").hide();
@@ -4598,7 +4598,7 @@ exports.nullTraceErrorLst = [
     "Unknown error: The server is OVERLOADED or your code has UNSUPPORTED FEATURES.",
     "Try again later. This site is free with NO available technical support. [#NullTrace]"
 ];
-exports.unsupportedFeaturesStr = 'see <a target="_blank" href="https://github.com/pgbovine/OnlinePythonTutor/blob/master/unsupported-features.md">UNSUPPORTED FEATURES</a>';
+exports.unsupportedFeaturesStr = '';
 
 
 /***/ }),
@@ -23065,7 +23065,7 @@ var AbstractBaseFrontend = /** @class */ (function () {
     AbstractBaseFrontend.prototype.setFronendError = function (lines, ignoreLog) {
         if (ignoreLog === void 0) { ignoreLog = false; }
         $("#frontendErrorOutput").html(lines.map(pytutor_1.htmlspecialchars).join('<br/>') +
-            (ignoreLog ? '' : '<p/>(' + footer_html_1.unsupportedFeaturesStr + ')'));
+            (ignoreLog ? '' : '<p/>'));
         // log it to the server as well (unless ignoreLog is on)
         if (!ignoreLog) {
             var errorStr = lines.join();
@@ -24839,10 +24839,10 @@ var OptLiveFrontend = /** @class */ (function (_super) {
             curEntry.event === 'uncaught_exception') {
             pytutor_1.assert(curEntry.exception_msg);
             if (curEntry.exception_msg == "Unknown error") {
-                $("#frontendErrorOutput").html('Unknown error: ' + footer_html_1.unsupportedFeaturesStr);
+                $("#frontendErrorOutput").html('Unknown error: ');
             }
             else {
-                $("#frontendErrorOutput").html(pytutor_1.htmlspecialchars(curEntry.exception_msg) + '<p/>(' + footer_html_1.unsupportedFeaturesStr + ')');
+                $("#frontendErrorOutput").html(pytutor_1.htmlspecialchars(curEntry.exception_msg) + '<p/>');
             }
             if (myVisualizer.curLineNumber) {
                 var Range = ace.require('ace/range').Range;
@@ -24851,7 +24851,7 @@ var OptLiveFrontend = /** @class */ (function (_super) {
             }
         }
         else if (myVisualizer.instrLimitReached) {
-            $("#frontendErrorOutput").html(pytutor_1.htmlspecialchars(myVisualizer.instrLimitReachedWarningMsg) + '<p/>(' + footer_html_1.unsupportedFeaturesStr + ')');
+            $("#frontendErrorOutput").html(pytutor_1.htmlspecialchars(myVisualizer.instrLimitReachedWarningMsg) + '<p/>');
         }
         else {
             $("#frontendErrorOutput").html(''); // clear it
