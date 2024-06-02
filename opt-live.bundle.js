@@ -32,8 +32,8 @@ async function tracePythonExec(code, rawInputLst,backendOptionsObj, callback) {
 	
 	await pyodide.setStdin(new StdinHandler(rawInputLst))
 	let trace = run(code, backendOptionsObj["cumilative_mode"], backendOptionsObj["heap_primitives"]);
-	console.log(backendOptionsObj)
-	console.log(trace);
+	// console.log(backendOptionsObj)
+	// console.log(trace);
 	callback(JSON.parse(trace));
 }
 
