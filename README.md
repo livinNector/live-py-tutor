@@ -10,7 +10,7 @@ This project is a modified version of Python tutor live programming mode by @pgb
 - Different pointer modes like inline primitives, nested object, render everything in heap
 
 ## Live Programming mode
-In the live programming mode the outputs are computed as you type
+In the live programming mode the outputs are computed as you type in the code block and change the input.
 
 ## Perks of Pyodide(powered by wasm)
 - Everthing runs on your browser
